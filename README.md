@@ -27,6 +27,7 @@ tarefas e importar os plugins.
 
 
 A configuração básica do Grunt é:
+**Colocamos esse código dentro do Gruntfile.js 
 
     module.exports = function(grunt) {
     grunt.initConfig({
