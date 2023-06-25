@@ -112,7 +112,7 @@ Plugins: exemplo de configuração
          less: {
              desenvolvimento: {
                  files: {
-                     ‘final.css’: ‘origem.less’
+                     ‘final.css’: ‘origem.less’ >>>>> EX:        'main.min.css': 'main.less'
                   }
              }
         }
@@ -133,8 +133,85 @@ final para outra pasta e comprimindo ele.
             files: { ‘dist/final.css’: ‘origem.less’ }
         }
     }
+
+
+
 _________________________________________________________
+Trabalhando com Less no Grunt
+
+Intalar o Less no Projeto
+
+    npm install --save-dev grunt-contrib-less
+
+Em seguida configuramos o Plugin no Arq gulpfile.js como está abaixo    
+
+        module .exports = function(grunt) {
+            grunt.initConfig({
+                pkg: grunt.file.readJSON('package.json'),
+                less: {
+                    development: {
+                        files: {
+                            'main.css': 'main.less'
+                        }
+                    },
+                    production: {
+                        options: {
+                            compress: true,
+                        },
+                        files: {
+                            'main.min.css': 'main.less'
+                        }
+                    }
+                }
+            })
+
+        
+            grunt.loadNpmTasks('grunt-contrib-less');
+
+            // [] = Array...pode conter várias tarefas
+            grunt.registerTask('default', ['less'])
+        }
+
+crie o arq fonte main.less 
+
+comando 
+
+    npm run grunt **será criados os arquivos .css
+_________________________________________________________
+Também podemos usar o Grunt para compilar o SASS
+
+Instale os pacotes
+
+npm install --save-dev grunt-contrib-sass
+
+Colocamos no final do arq
+
+    grunt.loadNpmTasks('grunt-contrib-sass');
+
+  
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_________________________________________________________
 Documentação Grunt:
 https://gruntjs.com/getting-started
+
+
