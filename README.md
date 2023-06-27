@@ -188,27 +188,85 @@ Colocamos no final do arq
 
     grunt.loadNpmTasks('grunt-contrib-sass');
 
-  
+
+
+
+    
+        module .exports = function(grunt) {
+            grunt.initConfig({
+                pkg: grunt.file.readJSON('package.json'),
+                less: {
+                    development: {
+                        files: {
+                            'main.css': 'main.less'
+                        }
+                    },
+                    production: {
+                        options: {
+                            compress: true,
+                        },
+                        files: {
+                            'main.min.css': 'main.less'
+                        }
+                    }
+                }
+            
+            })
+        }
 
 
 
 
+__________________________________________________________
+
+Para podermos executar as tarefas paralelamente precisamos instalar um plugin
+
+    npm install --save-dev grunt-concurrent
+
+Depois chamamos o pacote 
+
+    grunt.loadNpmTasks('grunt-concurrent');
+
+após vamos configurar o grunt
 
 
+    module .exports = function(grunt) {
+        grunt.initConfig({
+            pkg: grunt.file.readJSON('package.json'),
+            less: {
+                development: {
+                    files: {
+                        'main.css': 'main.less'
+                    }
+                },
+                production: {
+                    options: {
+                        compress: true,
+                    },
+                    files: {
+                        'main.min.css': 'main.less'
+                    }
+                }
+            },
+            sass: {
+                dist: {
+                    options: {
+                        style: 'compressed'
+                    },
+                    files: {
+                        'main2.css': 'main.scss'
+                    }
+                }
+            },
+            concurrent: {
+                // As tarefas que serão executadas paralelamente deverão estar aqui 
+                target: ['HelloWord', 'less', 'sass', 'TarefaDemorada']
+            }
+        })
 
+por fim, iremos auterar a função default();
 
-
-
-
-
-
-
-
-
-
-
-
-
+    grunt.registerTask('default', ['concurrent']);
 
 _________________________________________________________
 Documentação Grunt:

@@ -1,7 +1,7 @@
 {
   "name": "grunt",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h2>Automação de tarefas com Grunt</h2>\r O Grunt, é uma ferramenta para automação de tarefas\r front-end, com ele podemos automatizar a compilação de SASS e LESS, comprimir\r arquivos, entre outras coisas.",
   "main": "index.js",
   "scripts": {
     "grunt": "grunt",
@@ -11,6 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "grunt": "^1.6.1",
+    "grunt-concurrent": "^3.0.0",
     "grunt-contrib-less": "^3.0.0",
     "grunt-contrib-sass": "^2.0.0"
   }
