@@ -19,6 +19,7 @@ de forma global:
     npm install –g grunt-cli
 
 Após isso, na pasta do projeto digitamos:
+
     npm install –-save-dev grunt
 
 ***O arquivo de configuração do Grunt é o
